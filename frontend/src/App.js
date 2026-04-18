@@ -26,6 +26,8 @@ function AppInner() {
     setPage('dashboard');
   };
 
+  console.log(isDemo);
+
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
