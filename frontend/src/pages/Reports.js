@@ -70,7 +70,7 @@ export default function Reports({ user }) {
     setPdfMsg({ t: '', m: '' });
     try {
       const token = localStorage.getItem('token');
-      let url = `http://localhost:5000/api/reports/pdf?type=${pdfType}&limit=${pdfLimit}`;
+      let url = `https://rsims-production.up.railway.app/reports/pdf?type=${pdfType}&limit=${pdfLimit}`;
       if (fromDate) url += `&fromDate=${fromDate}`;
       if (toDate)   url += `&toDate=${toDate}`;
 

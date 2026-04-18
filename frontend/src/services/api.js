@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE = 'http://localhost:5000/api';
+const BASE = 'https://rsims-production.up.railway.app/';
 const h = () => ({ headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } });
 
 export const loginUser       = d  => axios.post(`${BASE}/auth/login`, d);
