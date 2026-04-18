@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Outfit:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  body {
+    @apply bg-ink-900 text-slate2-bright font-body;
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(245,158,11,0.03) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(56,189,248,0.03) 0%, transparent 50%);
+    min-height: 100vh;
+  }
+
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { @apply bg-ink-900; }
+  ::-webkit-scrollbar-thumb { @apply bg-ink-500 rounded-full; }
+  
+  ::selection { @apply bg-amber/20 text-amber; }
+}
+
+@layer components {
+  /* ── Grid line texture on cards ── */
+  .grid-bg {
+    background-image: 
+      linear-gradient(rgba(245,158,11,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(245,158,11,0.04) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  /* ── Stat card ── */
+  .stat-card {
+    @apply bg-ink-800 border border-ink-600 rounded-xl p-6 relative overflow-hidden;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .stat-card:hover {
+    @apply border-amber/40;
+    box-shadow: 0 0 24px rgba(245,158,11,0.08);
+  }
+
+  /* ── Table ── */
+  .data-table { @apply w-full text-sm; border-collapse: collapse; }
+  .data-table th {
+    @apply text-left py-3 px-4 font-mono text-xs text-slate2-dim uppercase tracking-widest;
+    @apply bg-ink-700 border-b border-ink-600;
+  }
+  .data-table td { @apply py-3 px-4 border-b border-ink-700 text-slate2-bright; }
+  .data-table tr:last-child td { @apply border-b-0; }
+  .data-table tbody tr { transition: background 0.15s; }
+  .data-table tbody tr:hover td { @apply bg-ink-700/50; }
+
+  /* ── Input ── */
+  .field {
+    @apply w-full bg-ink-700 border border-ink-500 rounded-lg px-4 py-2.5;
+    @apply text-slate2-bright text-sm font-body outline-none;
+    @apply placeholder-slate2-dim;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .field:focus {
+    @apply border-amber/60;
+    box-shadow: 0 0 0 3px rgba(245,158,11,0.08);
+  }
+  select.field option { @apply bg-ink-700 text-slate2-bright; }
+
+  /* ── Label ── */
+  .field-label {
+    @apply block text-xs font-mono text-slate2-dim uppercase tracking-wider mb-1.5;
+  }
+
+  /* ── Buttons ── */
+  .btn-amber {
+    @apply bg-amber text-ink-900 font-semibold text-sm px-4 py-2 rounded-lg;
+    @apply hover:bg-amber-glow transition-all duration-150;
+    @apply disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+  .btn-ghost {
+    @apply bg-ink-700 border border-ink-500 text-slate2-bright text-sm px-4 py-2 rounded-lg;
+    @apply hover:border-slate2-dim hover:text-white transition-all duration-150;
+  }
+  .btn-danger {
+    @apply bg-bad/10 border border-bad/30 text-bad text-sm px-4 py-2 rounded-lg;
+    @apply hover:bg-bad/20 transition-all duration-150;
+  }
+  .btn-success {
+    @apply bg-good/10 border border-good/30 text-good text-sm px-4 py-2 rounded-lg;
+    @apply hover:bg-good/20 transition-all duration-150;
+  }
+  .btn-info {
+    @apply bg-info/10 border border-info/30 text-info text-sm px-4 py-2 rounded-lg;
+    @apply hover:bg-info/20 transition-all duration-150;
+  }
+
+  /* ── Badge ── */
+  .badge-ok      { @apply text-xs font-mono font-semibold px-2.5 py-0.5 rounded-full bg-good/10 text-good border border-good/20; }
+  .badge-low     { @apply text-xs font-mono font-semibold px-2.5 py-0.5 rounded-full bg-bad/10 text-bad border border-bad/20; }
+  .badge-warn    { @apply text-xs font-mono font-semibold px-2.5 py-0.5 rounded-full bg-warn/10 text-warn border border-warn/20; }
+  .badge-info    { @apply text-xs font-mono font-semibold px-2.5 py-0.5 rounded-full bg-info/10 text-info border border-info/20; }
+  .badge-role-admin   { @apply text-xs font-mono font-semibold px-2.5 py-0.5 rounded-full bg-amber/10 text-amber border border-amber/20; }
+  .badge-role-manager { @apply text-xs font-mono font-semibold px-2.5 py-0.5 rounded-full bg-info/10 text-info border border-info/20; }
+  .badge-role-staff   { @apply text-xs font-mono font-semibold px-2.5 py-0.5 rounded-full bg-good/10 text-good border border-good/20; }
+
+  /* ── Alert ── */
+  .alert-ok   { @apply text-sm px-4 py-3 rounded-lg bg-good/10 border border-good/25 text-good; }
+  .alert-err  { @apply text-sm px-4 py-3 rounded-lg bg-bad/10 border border-bad/25 text-bad; }
+  .alert-warn { @apply text-sm px-4 py-3 rounded-lg bg-warn/10 border border-warn/25 text-warn; }
+
+  /* ── Page title ── */
+  .page-title {
+    @apply font-display font-bold text-2xl text-white mb-1 tracking-tight;
+  }
+  .page-sub {
+    @apply text-sm text-slate2-dim mb-6;
+  }
+}
+
+/* ── Fade-in animation ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.3s ease forwards; }
