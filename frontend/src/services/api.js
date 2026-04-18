@@ -1,30 +1,40 @@
 import axios from 'axios';
 
-const BASE = 'https://rsims-production.up.railway.app/';
-const h = () => ({ headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } });
+const BASE = 'https://rsims-production.up.railway.app';
+const h = () => ({
+  headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+});
 
-export const loginUser       = d  => axios.post(`${BASE}/auth/login`, d);
+// AUTH
+export const loginUser = d =>
+  axios.post(`${BASE}/api/auth/login`, d);
 
-export const getProducts     = () => axios.get(`${BASE}/products`, h());
-export const addProduct      = d  => axios.post(`${BASE}/products`, d, h());
-export const updateProduct   = (id,d) => axios.put(`${BASE}/products/${id}`, d, h());
-export const deleteProduct   = id => axios.delete(`${BASE}/products/${id}`, h());
+// PRODUCTS
+export const getProducts   = () => axios.get(`${BASE}/api/products`, h());
+export const addProduct    = d  => axios.post(`${BASE}/api/products`, d, h());
+export const updateProduct = (id, d) => axios.put(`${BASE}/api/products/${id}`, d, h());
+export const deleteProduct = id => axios.delete(`${BASE}/api/products/${id}`, h());
 
-export const getSuppliers    = () => axios.get(`${BASE}/suppliers`, h());
-export const addSupplier     = d  => axios.post(`${BASE}/suppliers`, d, h());
+// SUPPLIERS
+export const getSuppliers = () => axios.get(`${BASE}/api/suppliers`, h());
+export const addSupplier  = d  => axios.post(`${BASE}/api/suppliers`, d, h());
 
-export const getSales        = () => axios.get(`${BASE}/sales`, h());
-export const addSale         = d  => axios.post(`${BASE}/sales`, d, h());
+// SALES
+export const getSales = () => axios.get(`${BASE}/api/sales`, h());
+export const addSale  = d  => axios.post(`${BASE}/api/sales`, d, h());
 
-export const getPurchases    = () => axios.get(`${BASE}/purchases`, h());
-export const addPurchase     = d  => axios.post(`${BASE}/purchases`, d, h());
+// PURCHASES
+export const getPurchases = () => axios.get(`${BASE}/api/purchases`, h());
+export const addPurchase  = d  => axios.post(`${BASE}/api/purchases`, d, h());
 
-export const getDashboard    = () => axios.get(`${BASE}/reports/dashboard`, h());
-export const getInventoryReport = () => axios.get(`${BASE}/reports/inventory`, h());
-export const getLowStockReport  = () => axios.get(`${BASE}/reports/lowstock`, h());
-export const getSalesReport     = () => axios.get(`${BASE}/reports/sales`, h());
-export const getPurchaseReport  = () => axios.get(`${BASE}/reports/purchases`, h());
+// REPORTS
+export const getDashboard         = () => axios.get(`${BASE}/api/reports/dashboard`, h());
+export const getInventoryReport   = () => axios.get(`${BASE}/api/reports/inventory`, h());
+export const getLowStockReport    = () => axios.get(`${BASE}/api/reports/lowstock`, h());
+export const getSalesReport       = () => axios.get(`${BASE}/api/reports/sales`, h());
+export const getPurchaseReport    = () => axios.get(`${BASE}/api/reports/purchases`, h());
 
-export const getUsers        = () => axios.get(`${BASE}/users`, h());
-export const addUser         = d  => axios.post(`${BASE}/users`, d, h());
-export const deleteUser      = id => axios.delete(`${BASE}/users/${id}`, h());
+// USERS
+export const getUsers   = () => axios.get(`${BASE}/api/users`, h());
+export const addUser    = d  => axios.post(`${BASE}/api/users`, d, h());
+export const deleteUser = id => axios.delete(`${BASE}/api/users/${id}`, h());
